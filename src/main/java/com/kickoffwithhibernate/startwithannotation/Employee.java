@@ -13,7 +13,10 @@ import javax.persistence.Transient;
 
 /**
  * Created by bhushan on 8/3/17.
+ * Note ; This entity is registered with hibernate.cfg.xml, <mapping class="com.kickoffwithhibernate.startwithannotation.Employee"/>(means reference to a mapping file in configuration)
+ *
  */
+
 @Entity(name = "employess_2")
 @Table(name = "employess_2")
 public class Employee {

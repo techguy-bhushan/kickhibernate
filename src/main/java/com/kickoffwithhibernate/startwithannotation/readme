@@ -1,227 +1,323 @@
- *Hibernate Annotations are based on the JPA 2 specification and supports all the features.
- *All the JPA annotations are defined in the javax.persistence.* package.
- *Hibernate EntityManager implements the interfaces and life cycle defined by the JPA specification.
- *The core advantage of using hibernate annotation is that you don't need to create mapping (hbm) file.
- *Here, hibernate annotations are used to provide the meta data.
+*Hibernate Annotations are based on the JPA 2 specification and supports all the features.
+        *All the JPA annotations are defined in the javax.persistence.* package.
+        *Hibernate EntityManager implements the interfaces and life cycle defined by the JPA specification.
+        *The core advantage of using hibernate annotation is that you don't need to create mapping (hbm) file.
+        *Here, hibernate annotations are used to provide the meta data.
 
-Hibernate JPA Annotations - Contents:
+        # Hibernate  -> JPA Annotations
 
-Annotation	-> Package -> Definition
-@Entity	import javax.persistence.Entity; => Which java bean we want to persist in database, add @Entity annotation on it
+        # @Entity =>
+<p>package: import javax.persistence.Entity;
+        Contents:Which java bean we want to persist in database, add @Entity annotation on it.<p>
+<code>
+e.g:-
+@Entity
+public class User {....}
+</code>
+
+        # @Table =>
+<p> package: import javax.persistence.Table;
+        content: Specifies the primary table for the annotated entity. Additional tables may be specified using SecondaryTable or SecondaryTables annotation.
+        If no Table annotation is specified for an entity class, the default values apply. </p>
+<code>
 e.g:
 @Entity
-public class User { }
-
-@Table	import javax.persistence.Table; => Specifies the primary table for the annotated entity. Additional tables may be specified using SecondaryTable or SecondaryTables annotation.
-                                           If no Table annotation is specified for an entity class, the default values apply.
-e.g:
-    @Entity
-    @Table(name="CUST", schema="RECORDS")
-    public class Customer { ... }
+@Table(name="CUST", schema="RECORDS")
+public class Customer { ... }
+</code>
 
 
-@Column	import javax.persistence.Column; =>Is used to specify the mapped column for a persistent property or field.
+        # @Column
+<p> package: import javax.persistence.Column;
+        content: It is used to specify the mapped column for a persistent property or field.
+<code>
 e.g:
 @Column(name = "email_address", nullable = true, length = 120)
-	private String emailAddress;
+private String emailAddress;
+</code>
 
-
-@Id	import javax.persistence.Id; => Specifies the primary key of an entity.
+        # @Id
+<p>package: import javax.persistence.Id;
+        content: Specifies the primary key of an entity. <p>
+<code>
 e.g:-
-    @Id
-	private Long id;
+@Id
+private Long id;
+</code>
 
-
-@GeneratedValue	import javax.persistence.GeneratedValue; -> Provides for the specification of generation strategies for the values of primary keys, default strategy is GenerationType.AUTO.
+        # @GeneratedValue
+<p> package: import javax.persistence.GeneratedValue;
+        content: Provides for the specification of generation strategies for the values of primary keys, default strategy is GenerationType.AUTO. <p>
+<code>
 e.g:-
-    @Id
-    @GeneratedValue
-	private Long id;
+@Id
+@GeneratedValue
+private Long id;
+<code>
 
-@Version	import javax.persistence.Version; -> Specifies the version field or property of an entity class that serves as its optimistic lock value.The version is used to ensure integrity when performing the merge operation and for optimistic concurrency control.
+# @Version
+<p> package: import javax.persistence.Version;
+        content: Specifies the version field or property of an entity class that serves as its optimistic lock value.
+        The version is used to ensure integrity when performing the merge operation and for optimistic concurrency control. </p>
+<code>
 e.g:-
-    @Version
-	private Long version;
+@Version
+private Long version;
+</code>
 
-
-@OrderBy	import javax.persistence.OrderBy; -> Specifies the ordering of the elements of a collection valued association or element collection at the point when the association or collection is retrieved.
+        # @OrderBy
+<p>package: import javax.persistence.OrderBy;
+        content: Specifies the ordering of the elements of a collection valued association or element collection at the point when the association or collection is retrieved.
+<code>
 e.g:-
-    @OrderBy("createdOn desc")
-	private List<Book> books;
+@OrderBy("createdOn desc")
+private List<Book> books;
+</code>
 
-
-@Transient	import javax.persistence.Transient; -> @Transient annotation is used to indicate that a field is not to be persisted in the database.
+        # @Transient
+<p> import javax.persistence.Transient;
+        content: @Transient annotation is used to indicate that a field is not to be persisted in the database.</p>
+<code>
 e.g:-
-    @Transient
-	private String confirmPassword;
+@Transient
+private String confirmPassword;
+</code>
 
-@Lob	import javax.persistence.Lob; -> @Lob used to specifies that a persistent property or field should be persisted as a large object to a database-supported large object type.
+        # @Lob
+<p> package: import javax.persistence.Lob;
+        content -> @Lob used to specifies that a persistent property or field should be persisted as a large object to a database-supported large object type.<p>
+<code>
 e.g:1-
-       @Lob
-       protected String report;
+@Lob
+protected String report;
 
- e.g:2-
-        @Lob
-         protected byte[] pic;
+</code>
+</code>
+        e.g:2-
+@Lob
+protected byte[] pic;
+</code>
 
 
+        # Hibernate Inheritance Mapping Annotations
 
-#Hibernate Inheritance Mapping Annotations#
-@Inheritance	import javax.persistence.Inheritance; ->  Defines the inheritance strategy to be used for an entity class hierarchy. It is specified on the entity class that is the root of the entity class hierarchy. If the Inheritance annotation is not specified or if no inheritance type is specified for an entity class hierarchy, the SINGLE_TABLE mapping strategy is used.
+        #@Inheritance
+<p1>package: import javax.persistence.Inheritance;
+        content: Defines the inheritance strategy to be used for an entity class hierarchy.
+        It is specified on the entity class that is the root of the entity class hierarchy.
+        If the Inheritance annotation is not specified or if no inheritance type is specified for an entity class hierarchy, the SINGLE_TABLE mapping strategy is used.</p>
+<code>
 e.g:-
-        @Inheritance(strategy= InheritanceType.JOINED)
-        public class Employee {}
+@Inheritance(strategy= InheritanceType.JOINED)
+public class Employee {}
+</code>
 
+        # @DiscriminatorColumn
+<p1>package: import javax.persistence.DiscriminatorColumn;
+        content:It Is used to define the discriminator column for the SINGLE_TABLE and JOINED inheritance mapping strategies.
+        The strategy and the discriminator column are only specified in the root of an entity class hierarchy or subhierarchy in which a different inheritance strategy is applied.
+        If the DiscriminatorColumn annotation is missing, and a discriminator column is required, the name of the discriminator column defaults to "DTYPE" and the discriminator type to DiscriminatorType.STRING.</p>
 
-@DiscriminatorColumn	import javax.persistence.DiscriminatorColumn; -> It Is used to define the discriminator column for the SINGLE_TABLE and JOINED inheritance mapping strategies. The strategy and the discriminator column are only specified in the root of an entity class hierarchy or subhierarchy in which a different inheritance strategy is applied. If the DiscriminatorColumn annotation is missing, and a discriminator column is required, the name of the discriminator column defaults to "DTYPE" and the discriminator type to DiscriminatorType.STRING.
-
+<code>
 Example:
-     @Entity
-     @Table(name="CUST")
-     @Inheritance(strategy=SINGLE_TABLE)
-     @DiscriminatorColumn(name="DISC", discriminatorType=STRING,length=20)
-     public class Customer { ... }
+@Entity
+@Table(name="CUST")
+@Inheritance(strategy=SINGLE_TABLE)
+@DiscriminatorColumn(name="DISC", discriminatorType=STRING,length=20)
+public class Customer { ... }
 
-     @Entity
-     public class ValuedCustomer extends Customer { ... }
+@Entity
+public class ValuedCustomer extends Customer { ... }
+<code>
 
+# @DiscriminatorValue
+<p>package: import javax.persistence.DiscriminatorValue;
+        Is used to specify the value of the discriminator column for entities of the given type.
+        The DiscriminatorValue annotation can only be specified on a concrete entity class.
+        If the DiscriminatorValue annotation is not specified and a discriminator column is used, a provider-specific function will be used to generate a value representing the entity type. If the DiscriminatorType is STRING, the discriminator value default is the entity name.</p>
+<code>
+Example:
 
-@DiscriminatorValue	import javax.persistence.DiscriminatorValue; -> Is used to specify the value of the discriminator column for entities of the given type. The DiscriminatorValue annotation can only be specified on a concrete entity class. If the DiscriminatorValue annotation is not specified and a discriminator column is used, a provider-specific function will be used to generate a value representing the entity type. If the DiscriminatorType is STRING, the discriminator value default is the entity name.
- Example:
+@Entity
+@Table(name="CUST")
+@Inheritance(strategy=SINGLE_TABLE)
+@DiscriminatorColumn(name="DISC", discriminatorType=STRING,length=20)
+@DiscriminatorValue("CUSTOMER")
+public class Customer { ... }
 
-    @Entity
-    @Table(name="CUST")
-    @Inheritance(strategy=SINGLE_TABLE)
-    @DiscriminatorColumn(name="DISC", discriminatorType=STRING,length=20)
-    @DiscriminatorValue("CUSTOMER")
-    public class Customer { ... }
+@Entity
+@DiscriminatorValue("VCUSTOMER")
+public class ValuedCustomer extends Customer { ... }
+</code>
 
-    @Entity
-    @DiscriminatorValue("VCUSTOMER")
-    public class ValuedCustomer extends Customer { ... }
+        # @PrimaryKeyJoinColumn
+<p> package: import javax.persistence.PrimaryKeyJoinColumn;
+        content: This annotation specifies a primary key column that is used as a foreign key to join to another table.
+        It is used to join the primary table of an entity subclass in the JOINED mapping strategy to the primary table of its superclass;
+        it is used within a SecondaryTable annotation to join a secondary table to a primary table;
+        and it may be used in a OneToOne mapping in which the primary key of the referencing entity is used as a foreign key to the referenced entity.
+        If no PrimaryKeyJoinColumn annotation is specified for a subclass in the JOINED mapping strategy, the foreign key columns are assumed to have the same names as the primary key columns of the primary table of the superclass</p>
 
-
-@PrimaryKeyJoinColumn	import javax.persistence.PrimaryKeyJoinColumn; -> This annotation specifies a primary key column that is used as a foreign key to join to another table.It is used to join the primary table of an entity subclass in the JOINED mapping strategy to the primary table of its superclass; it is used within a SecondaryTable annotation to join a secondary table to a primary table; and it may be used in a OneToOne mapping in which the primary key of the referencing entity is used as a foreign key to the referenced entity.If no PrimaryKeyJoinColumn annotation is specified for a subclass in the JOINED mapping strategy, the foreign key columns are assumed to have the same names as the primary key columns of the primary table of the superclass
-
+<code>
 Example: Customer and ValuedCustomer subclass
 
-    @Entity
-    @Table(name="CUST")
-    @Inheritance(strategy=JOINED)
-    @DiscriminatorValue("CUST")
-    public class Customer { ... }
+@Entity
+@Table(name="CUST")
+@Inheritance(strategy=JOINED)
+@DiscriminatorValue("CUST")
+public class Customer { ... }
 
-    @Entity
-    @Table(name="VCUST")
-    @DiscriminatorValue("VCUST")
-    @PrimaryKeyJoinColumn(name="CUST_ID")
-    public class ValuedCustomer extends Customer { ... }
-
-
-
-@JoinColumn	import javax.persistence.JoinColumn; -> Specifies a column for joining an entity association or element collection. If the JoinColumn annotation itself is defaulted, a single join column is assumed and the default values apply.
- Example:
-
-   @ManyToOne
-   @JoinColumn(name="ADDR_ID")
-   public Address getAddress() { return address; }
+@Entity
+@Table(name="VCUST")
+@DiscriminatorValue("VCUST")
+@PrimaryKeyJoinColumn(name="CUST_ID")
+public class ValuedCustomer extends Customer { ... }
+</code>
 
 
+        # @JoinColumn
+<p>import javax.persistence.JoinColumn;
+        content: Specifies a column for joining an entity association or element collection.
+        If the JoinColumn annotation itself is defaulted, a single join column is assumed and the default values apply.
+<code>
 
-@JoinTable	import javax.persistence.JoinTable; ->Used in the mapping of associations. It is specified on the owning side of an association.A join table is typically used in the mapping of many-to-many and unidirectional one-to-many associations. It may also be used to map bidirectional many-to-one/one-to-many associations, unidirectional many-to-one relationships, and one-to-one associations (both bidirectional and unidirectional).When a join table is used in mapping a relationship with an embeddable class on the owning side of the relationship, the containing entity rather than the embeddable class is considered the owner of the relationship. If the JoinTable annotation is missing, the default values of the annotation elements apply. The name of the join table is assumed to be the table names of the associated primary tables concatenated together (owning side first) using an underscore.
- Example:
+Example:
 
-    @JoinTable(
+@ManyToOne
+@JoinColumn(name="ADDR_ID")
+public Address getAddress() { return address; }
+</code>
+
+
+        #@JoinTable
+<p> package: import javax.persistence.JoinTable;
+        content : Used in the mapping of associations. It is specified on the owning side of an association.
+        A join table is typically used in the mapping of many-to-many and unidirectional one-to-many associations.
+        It may also be used to map bidirectional many-to-one/one-to-many associations, unidirectional many-to-one relationships, and one-to-one associations (both bidirectional and unidirectional).
+        When a join table is used in mapping a relationship with an embeddable class on the owning side of the relationship, the containing entity rather than the embeddable class is considered the owner of the relationship.
+        If the JoinTable annotation is missing, the default values of the annotation elements apply.
+        The name of the join table is assumed to be the table names of the associated primary tables concatenated together (owning side first) using an underscore.
+<code>
+Example:
+
+@JoinTable(
         name="CUST_PHONE",
         joinColumns=
-            @JoinColumn(name="CUST_ID", referencedColumnName="ID"),
+        @JoinColumn(name="CUST_ID", referencedColumnName="ID"),
         inverseJoinColumns=
-            @JoinColumn(name="PHONE_ID", referencedColumnName="ID")
-    )
+        @JoinColumn(name="PHONE_ID", referencedColumnName="ID")
+)
+</code>
 
+        # @MapsId
+<p>package: import javax.persistence.MapsId
+        content: Designates a ManyToOne or OneToOne relationship attribute that provides the mapping for an EmbeddedId primary key,
+        an attribute within an EmbeddedId primary key, or a simple primary key of the parent entity.
+        The value element specifies the attribute within a composite key to which the relationship attribute corresponds.
+        If the entity's primary key is of the same Java type as the primary key of the entity referenced by the relationship, the value attribute is not specified.
 
-@MapsId	import javax.persistence.MapsId; ->Designates a ManyToOne or OneToOne relationship attribute that provides the mapping for an EmbeddedId primary key, an attribute within an EmbeddedId primary key, or a simple primary key of the parent entity. The value element specifies the attribute within a composite key to which the relationship attribute corresponds. If the entity's primary key is of the same Java type as the primary key of the entity referenced by the relationship, the value attribute is not specified.
-    Example:
+<code>
+Example:
 
-    // parent entity has simple primary key
+// parent entity has simple primary key
 
-    @Entity
-    public class Employee {
-       @Id long empId;
-       String name;
-       ...
-    }
+@Entity
+public class Employee {
+    @Id long empId;
+    String name;
+    ...
+}
 
-    // dependent entity uses EmbeddedId for composite key
+// dependent entity uses EmbeddedId for composite key
 
-    @Embeddable
-    public class DependentId {
-       String name;
-       long empid;   // corresponds to primary key type of Employee
-    }
+@Embeddable
+public class DependentId {
+    String name;
+    long empid;   // corresponds to primary key type of Employee
+}
 
-    @Entity
-    public class Dependent {
-       @EmbeddedId DependentId id;
-        ...
-       @MapsId("empid")  //  maps the empid attribute of embedded id
-       @ManyToOne Employee emp;
-    }
+@Entity
+public class Dependent {
+    @EmbeddedId DependentId id;
+    ...
+    @MapsId("empid")  //  maps the empid attribute of embedded id
+    @ManyToOne Employee emp;
+}
+</code>
 
+        #Hibernate Association Mapping Annotations
 
-#Hibernate Association Mapping Annotations#
-@OneToOne	import javax.persistence.OneToOne; -> This annotation defines a single-valued association to another entity that has one-to-one multiplicity. It is not normally necessary to specify the associated target entity explicitly since it can usually be inferred from the type of the object being referenced.
+        # @OneToOne
+<p> package: import javax.persistence.OneToOne;
+        content: This annotation defines a single-valued association to another entity that has one-to-one multiplicity.
+        It is not normally necessary to specify the associated target entity explicitly since it can usually be inferred from the type of the object being referenced.
+
+<code>
 Example :
 
 @Entity
 public class User {
-@OneToOne
-private UserProfile userProfile;
+    @OneToOne
+    private UserProfile userProfile;
 }
+</code>
 
+        # @ManyToOne
+<p>package import javax.persistence.ManyToOne;
+        content: Defines a single-valued association to another entity class that has many-to-one multiplicity.
+        It is not normally necessary to specify the target entity explicitly since it can usually be inferred from the type of the object being referenced. If the relationship is bidirectional, the non-owning OneToMany entity side must used the mappedBy element to specify the relationship field or property of the entity that is the owner of the relationship.
+        The ManyToOne annotation may be used within an embeddable class to specify a relationship from the embeddable class to an entity class.
+        If the relationship is bidirectional, the non-owning OneToMany entity side must use the mappedBy element of the OneToMany annotation to specify the relationship field or property of the embeddable field or property on the owning side of the relationship.
+        The dot (".") notation syntax must be used in the mappedBy element to indicate the relationship attribute within the embedded attribute. The value of each identifier used with the dot notation is the name of the respective embedded field or property.
+<code>
+Example:
 
-@ManyToOne	import javax.persistence.ManyToOne; -> Defines a single-valued association to another entity class that has many-to-one multiplicity. It is not normally necessary to specify the target entity explicitly since it can usually be inferred from the type of the object being referenced. If the relationship is bidirectional, the non-owning OneToMany entity side must used the mappedBy element to specify the relationship field or property of the entity that is the owner of the relationship.
-                                                   The ManyToOne annotation may be used within an embeddable class to specify a relationship from the embeddable class to an entity class. If the relationship is bidirectional, the non-owning OneToMany entity side must use the mappedBy element of the OneToMany annotation to specify the relationship field or property of the embeddable field or property on the owning side of the relationship. The dot (".") notation syntax must be used in the mappedBy element to indicate the relationship attribute within the embedded attribute. The value of each identifier used with the dot notation is the name of the respective embedded field or property.
+@ManyToOne(optional=false)
+@JoinColumn(name="CUST_ID", nullable=false, updatable=false)
+public Customer getCustomer() { return customer; }
+</code>
 
- Example:
-
-      @ManyToOne(optional=false)
-      @JoinColumn(name="CUST_ID", nullable=false, updatable=false)
-      public Customer getCustomer() { return customer; }
-
-
-@OneToMany	import javax.persistence.OneToMany; ->Defines a many-valued association with one-to-many multiplicity. If the collection is defined using generics to specify the element type, the associated target entity type need not be specified; otherwise the target entity class must be specified. If the relationship is bidirectional, the mappedBy element must be used to specify the relationship field or property of the entity that is the owner of the relationship.
-                                                  The OneToMany annotation may be used within an embeddable class contained within an entity class to specify a relationship to a collection of entities. If the relationship is bidirectional, the mappedBy element must be used to specify the relationship field or property of the entity that is the owner of the relationship. When the collection is a java.util.Map, the cascade element and the orphanRemoval element apply to the map value.
-
+        # @OneToMany
+<p>package: import javax.persistence.OneToMany;
+        content:Defines a many-valued association with one-to-many multiplicity. If the collection is defined using generics to specify the element type, the associated target entity type need not be specified; otherwise the target entity class must be specified. If the relationship is bidirectional, the mappedBy element must be used to specify the relationship field or property of the entity that is the owner of the relationship.
+        The OneToMany annotation may be used within an embeddable class contained within an entity class to specify a relationship to a collection of entities. If the relationship is bidirectional,
+        the mappedBy element must be used to specify the relationship field or property of the entity that is the owner of the relationship.
+        When the collection is a java.util.Map, the cascade element and the orphanRemoval element apply to the map value.</p>
+<code>
 Example 1: One-to-Many association using generics
 
-    // In Customer class:
+// In Customer class:
 
-    @OneToMany(cascade=ALL, mappedBy="customer")
-    public Set<Order> getOrders() { return orders; }
+@OneToMany(cascade=ALL, mappedBy="customer")
+public Set<Order> getOrders() { return orders; }
 
-    In Order class:
+        In Order class:
 
-    @ManyToOne
-    @JoinColumn(name="CUST_ID", nullable=false)
-    public Customer getCustomer() { return customer; }
+@ManyToOne
+@JoinColumn(name="CUST_ID", nullable=false)
+public Customer getCustomer() { return customer; }
+<ode>
 
+# @ManyToMany
+<p>package: import javax.persistence.ManyToMany;
+        content: Defines a many-valued association with many-to-many multiplicity.
+        Every many-to-many association has two sides, the owning side and the non-owning, or inverse, side. The join table is specified on the owning side. If the association is bidirectional, either side may be designated as the owning side. If the relationship is bidirectional, the non-owning side must use the mappedBy element of the ManyToMany annotation to specify the relationship field or property of the owning side.
+        The join table for the relationship, if not defaulted, is specified on the owning side.
+        The ManyToMany annotation may be used within an embeddable class contained within an entity class to specify a relationship to a collection of entities. If the relationship is bidirectional and the entity containing the embeddable class is the owner of the relationship, the non-owning side must use the mappedBy element of the ManyToMany annotation to specify the relationship field or property of the embeddable class.
+        The dot (".") notation syntax must be used in the mappedBy element to indicate the relationship attribute within the embedded attribute.
+        The value of each identifier used with the dot notation is the name of the respective embedded field or property.</p>
 
-@ManyToMany	import javax.persistence.ManyToMany; ->Defines a many-valued association with many-to-many multiplicity.
-                                                   Every many-to-many association has two sides, the owning side and the non-owning, or inverse, side. The join table is specified on the owning side. If the association is bidirectional, either side may be designated as the owning side. If the relationship is bidirectional, the non-owning side must use the mappedBy element of the ManyToMany annotation to specify the relationship field or property of the owning side.
-                                                   The join table for the relationship, if not defaulted, is specified on the owning side.
-                                                   The ManyToMany annotation may be used within an embeddable class contained within an entity class to specify a relationship to a collection of entities. If the relationship is bidirectional and the entity containing the embeddable class is the owner of the relationship, the non-owning side must use the mappedBy element of the ManyToMany annotation to specify the relationship field or property of the embeddable class. The dot (".") notation syntax must be used in the mappedBy element to indicate the relationship attribute within the embedded attribute. The value of each identifier used with the dot notation is the name of the respective embedded field or property.
+<code>
+Example 1:
 
+// In Customer class:
 
-    Example 1:
+@ManyToMany
+@JoinTable(name="CUST_PHONES")
+public Set<PhoneNumber> getPhones() { return phones; }
 
-    // In Customer class:
+// In PhoneNumber class:
 
-    @ManyToMany
-    @JoinTable(name="CUST_PHONES")
-    public Set<PhoneNumber> getPhones() { return phones; }
-
-    // In PhoneNumber class:
-
-    @ManyToMany(mappedBy="phones")
-    public Set<Customer> getCustomers() { return customers; }
+@ManyToMany(mappedBy="phones")
+public Set<Customer> getCustomers() { return customers; }
+</code>
