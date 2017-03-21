@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.kickoffwithhibernate.entitymapping.inheritancemapping.tableperconcreteclass.withxml.Book">
+    <id name="id">
+        <generator class="increment"></generator>
+    </id>
+    <property name="name"></property>
+    <property name="author"></property>
+    <union-subclass name="com.kickoffwithhibernate.entitymapping.inheritancemapping.tableperconcreteclass.withxml.EBook">
+<property name="available" type="yes_no" not-null="true" column="isAvailable"></property>
+<property name="free" type="yes_no" not-null="true" column="isFree"></property>
+    </union-subclass>
+    <union-subclass name="com.kickoffwithhibernate.entitymapping.inheritancemapping.tableperconcreteclass.withxml.PrintedBook">
+<property name="weight"></property>
+<property name="bulkyPaperUsed" type="yes_no" not-null="true" column="isBulkyPaperUsed"></property>
+    </union-subclass>
+</class>
+</hibernate-mapping>

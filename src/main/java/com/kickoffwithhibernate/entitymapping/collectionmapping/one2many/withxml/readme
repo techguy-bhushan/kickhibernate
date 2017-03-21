@@ -1,0 +1,7 @@
+
+
+There are three subelements used in the list:
+
+    <key> element is used to define the foreign key in this table based on the Question class identifier.
+    <index> element is used to identify the type. List and Map are indexed collection.
+    <element> is used to define the element of the collection.

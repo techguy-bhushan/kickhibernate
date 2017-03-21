@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.kickoffwithhibernate.entitymapping.inheritancemapping.tablepersubclass.withxml.Employee" table="emp_" entity-name="emp_">
+    <id name="id">
+        <generator class="increment"></generator>
+    </id>
+    <property name="name"></property>
+    <joined-subclass name="com.kickoffwithhibernate.entitymapping.inheritancemapping.tablepersubclass.withxml.ContractEmployee" table="contract_eployees">
+        <key column="empId"></key>
+        <property name="contractDuration" type="java.lang.String"></property>
+        <property name="salaryPerHour" type="java.lang.Double"></property>
+    </joined-subclass>
+    <joined-subclass name="com.kickoffwithhibernate.entitymapping.inheritancemapping.tablepersubclass.withxml.RegularEmployee" table="regular_employees">
+        <key column="empId"></key>
+        <property name="salaryPerMonth"></property>
+    </joined-subclass>
+</class>
+</hibernate-mapping>

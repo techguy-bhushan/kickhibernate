@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.kickoffwithhibernate.entitymapping.collectionmapping.one2many.withxml.Question">
+        <id name="id">
+            <generator class="increment"></generator>
+        </id>
+        <property name="question"></property>
+        <list name="answers" cascade="all">
+            <key column="answer_id"></key>
+            <index column="type"></index>
+            <one-to-many class="com.kickoffwithhibernate.entitymapping.collectionmapping.one2many.withxml.Answer"/>
+        </list>
+    </class>
+    <class name="com.kickoffwithhibernate.entitymapping.collectionmapping.one2many.withxml.Answer">
+        <id name="id">
+            <generator class="increment"></generator>
+        </id>
+        <property name="answer"></property>
+    </class>
+</hibernate-mapping>

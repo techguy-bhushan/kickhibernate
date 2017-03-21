@@ -1,0 +1,4 @@
+Hibernate supports 3 types of Inheritance Mappings:
+Table per class hierarchy.
+Table per sub-class hierarchy.
+Table per concrete class hierarchy.

@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<!--  It is a configuration file, containing informations about the database and mapping file.-->
+<hibernate-configuration>
+    <session-factory>
+        <property name="hbm2ddl.auto">create</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/kickhib</property>
+        <property name="connection.password">password</property>
+        <property name="connection.username">root</property>
+        <property name="show_sql">true</property>
+        <mapping resource="employee.hbm.xml"></mapping>
+        <mapping resource="tableperhierarchy.hbm.xml"></mapping>
+        <mapping resource="testperconcreteclass.hbm.xml"></mapping>
+        <mapping resource="testpersubclass.hbm.xml"></mapping>
+        <mapping resource="question.hbm.xml"></mapping>
+        <mapping class="com.kickoffwithhibernate.startwithannotation.Employee"/>
+        <mapping class="com.kickoffwithhibernate.entitymapping.collectionmapping.one2many.withannotation.Song"></mapping>
+        <mapping class="com.kickoffwithhibernate.entitymapping.collectionmapping.one2many.withannotation.Album"></mapping>
+        <mapping class="com.kickoffwithhibernate.entitymapping.collectionmapping.one2many.another.NodeRecord"></mapping>
+        <mapping class="com.kickoffwithhibernate.entitymapping.collectionmapping.one2many.another.Node"></mapping>
+        <mapping class="com.kickoffwithhibernate.generatorclassesinhibernate.assigned.Assigned"></mapping>
+        <mapping class="com.kickoffwithhibernate.generatorclassesinhibernate.increment.IncrementGenerator"></mapping>
+        <mapping class="com.kickoffwithhibernate.generatorclassesinhibernate.sequence.SequenceGenerator"></mapping>
+        <mapping class="com.kickoffwithhibernate.generatorclassesinhibernate.hilo.Hilo"></mapping>
+        <mapping class="com.kickoffwithhibernate.generatorclassesinhibernate.nativegenerator.NativeGenerator"></mapping>
+        <mapping class="com.kickoffwithhibernate.generatorclassesinhibernate.identity.IdentityGenerator"></mapping>
+        <mapping class="com.kickoffwithhibernate.generatorclassesinhibernate.uuid.UuidGenerator"></mapping>
+        <mapping class="com.kickoffwithhibernate.generatorclassesinhibernate.guid.Guid"></mapping>
+        <mapping class="com.kickoffwithhibernate.generatorclassesinhibernate.customgenerator.Custom"></mapping>
+        <mapping class="com.kickoffwithhibernate.generatorclassesinhibernate.jpaidentifierstrategies.autoidentifier.Auto"></mapping>
+        <mapping class="com.kickoffwithhibernate.generatorclassesinhibernate.jpaidentifierstrategies.identityidentifier.Identity"></mapping>
+        <mapping class="com.kickoffwithhibernate.generatorclassesinhibernate.jpaidentifierstrategies.sequenceidentifier.Sequence"></mapping>
+        <mapping class="com.kickoffwithhibernate.entitymapping.inheritancemapping.hibernatetableperhierarchy.withannotation.Notification"></mapping>
+        <mapping class="com.kickoffwithhibernate.entitymapping.inheritancemapping.hibernatetableperhierarchy.withannotation.Email"></mapping>
+        <mapping class="com.kickoffwithhibernate.entitymapping.inheritancemapping.hibernatetableperhierarchy.withannotation.Message"></mapping>
+        <mapping class="com.kickoffwithhibernate.entitymapping.inheritancemapping.tableperconcreteclass.withannotation.Payment"></mapping>
+        <mapping class="com.kickoffwithhibernate.entitymapping.inheritancemapping.tableperconcreteclass.withannotation.ACH"></mapping>
+        <mapping class="com.kickoffwithhibernate.entitymapping.inheritancemapping.tableperconcreteclass.withannotation.CreditCard"></mapping>
+        <mapping class="com.kickoffwithhibernate.entitymapping.inheritancemapping.tablepersubclass.withannotation.Employee"></mapping>
+        <mapping class="com.kickoffwithhibernate.entitymapping.inheritancemapping.tablepersubclass.withannotation.ContractEmployee"></mapping>
+        <mapping class="com.kickoffwithhibernate.entitymapping.inheritancemapping.tablepersubclass.withannotation.RegularEmployee"></mapping>
+    </session-factory>
+</hibernate-configuration>
