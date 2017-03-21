@@ -3,7 +3,7 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.kickoffwithhibernate.entitymapping.collectionmapping.one2many.withxml.Question">
+    <class name="com.kickwithhibernate.entitymapping.collectionmapping.one2many.withxml.Question">
         <id name="id">
             <generator class="increment"></generator>
         </id>
@@ -11,10 +11,10 @@
         <list name="answers" cascade="all">
             <key column="answer_id"></key>
             <index column="type"></index>
-            <one-to-many class="com.kickoffwithhibernate.entitymapping.collectionmapping.one2many.withxml.Answer"/>
+            <one-to-many class="com.kickwithhibernate.entitymapping.collectionmapping.one2many.withxml.Answer"/>
         </list>
     </class>
-    <class name="com.kickoffwithhibernate.entitymapping.collectionmapping.one2many.withxml.Answer">
+    <class name="com.kickwithhibernate.entitymapping.collectionmapping.one2many.withxml.Answer">
         <id name="id">
             <generator class="increment"></generator>
         </id>
