@@ -30,6 +30,8 @@
      <!--Annotation base entity-->
      <mapping class="com.kickwithhibernate.startwithannotation.Employee"/>
      <mapping class="com.kickwithhibernate.entitymapping.associationmapping.one2onebidirectional.User"></mapping>
+     <mapping class="com.kickwithhibernate.entitymapping.collectionmapping.many2many.Course"></mapping>
+     <mapping class="com.kickwithhibernate.entitymapping.collectionmapping.many2many.Student"></mapping>
      <mapping class="com.kickwithhibernate.entitymapping.associationmapping.many2one.Department"></mapping>
      <mapping class="com.kickwithhibernate.entitymapping.associationmapping.many2one.Emp"></mapping>
      <mapping class="com.kickwithhibernate.entitymapping.associationmapping.one2onebidirectional.Profile"></mapping>
