@@ -24,14 +24,18 @@ public class QuestionTest {
     private void saveData() {
         Answer answer =  new Answer();
         answer.setAnswer("10101");
+
         Answer answer1 =  new Answer();
         answer1.setAnswer("10016");
+
         ArrayList<Answer> answers = new ArrayList<Answer>();
         answers.add(answer);
         answers.add(answer1);
+
         Question question = new Question();
         question.setQuestion("The least number of five digits which is completely divisible by 39, is ?");
         question.setAnswers(answers);
+
         BaseDAO<Question, Long> baseDAO = new BaseDAO<Question, Long>();
         baseDAO.save(question);
 

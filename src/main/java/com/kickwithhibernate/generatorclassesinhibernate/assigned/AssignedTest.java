@@ -18,9 +18,11 @@ public class AssignedTest {
         //here we are assigning id.
         assigned.setId(1);
         session.save(assigned);
+
         Assigned assigned1 = new Assigned();
         assigned1.setId(20);
         session.save(assigned1);
+
         session.getTransaction().commit();
         HibernateUtil.shutdown();
 

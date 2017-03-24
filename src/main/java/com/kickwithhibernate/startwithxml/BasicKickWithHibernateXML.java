@@ -19,9 +19,11 @@ public class BasicKickWithHibernateXML {
         * The org.hibernate.Transaction interface provides methods for transaction management.
         */
         session.beginTransaction();
+
         Employee employee = new Employee();
         employee.setFirstName("jhon");
         employee.setLasttName("doe");
+
         session.save(employee);
         session.getTransaction().commit();
         HibernateUtil.shutdown();

@@ -17,19 +17,23 @@ public class Test {
         Test test = new Test();
         test.saveData();
         test.fetchDate();
+
         HibernateUtil.shutdown();
     }
 
     private void saveData() {
         BaseDAO baseDAO = new BaseDAO();
+
         Album album = new Album();
         album.setName("*A Head Full of Dreams*");
         album.setArtist("Coldplay");
         baseDAO.save(album);
+
         Song track0 = new Song();
         track0.setName("A Head Full of Dreams");
         track0.setAlbum(album);
         baseDAO.save(track0);
+
         Song track1 = new Song();
         track1.setName("Birds");
         track1.setAlbum(album);
@@ -41,6 +45,7 @@ public class Test {
         Session session = HibernateUtil.getSession();
         Query query = session.createQuery("from albums");
         List<Album> albumList = query.list();
+
         Iterator<Album> iterator = albumList.iterator();
         while (iterator.hasNext()) {
             Album album = iterator.next();

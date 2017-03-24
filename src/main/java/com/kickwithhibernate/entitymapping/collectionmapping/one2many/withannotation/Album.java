@@ -17,8 +17,11 @@ public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String name;
+
     private String artist;
+
     @OneToMany(mappedBy = "album")
     List<Song> songs = new ArrayList<Song>();
 

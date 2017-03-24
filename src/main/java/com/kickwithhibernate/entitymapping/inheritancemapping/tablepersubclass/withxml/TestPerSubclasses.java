@@ -13,11 +13,13 @@ public class TestPerSubclasses {
         regularEmployee.setName("abc");
         regularEmployee.setSalaryPerMonth(35000);
         createData(regularEmployee);
+
         ContractEmployee contractEmployee = new ContractEmployee();
         contractEmployee.setName("rst");
         contractEmployee.setContractDuration("1 yr");
         contractEmployee.setSalaryPerHour(1000);
         createData(contractEmployee);
+
         HibernateUtil.shutdown();
 
     }

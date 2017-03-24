@@ -16,7 +16,9 @@ public class Node {
     @Id
     @GeneratedValue
     private Long id;
+
     private Date updateDate;
+
     @OneToMany(targetEntity = NodeRecord.class, mappedBy = "node")
     List<NodeRecord> nodeRecords;
 

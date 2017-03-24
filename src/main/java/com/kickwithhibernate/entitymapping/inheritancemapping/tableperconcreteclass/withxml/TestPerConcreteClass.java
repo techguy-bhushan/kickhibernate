@@ -13,18 +13,21 @@ public class TestPerConcreteClass {
         book.setName("The Fault in Our Stars");
         book.setAuthor("John Green");
         createData(book);
+
         PrintedBook printedBook = new PrintedBook();
         printedBook.setName("Looking for Alaska");
         printedBook.setAuthor("John Green");
         printedBook.setWeight(1.2);
         printedBook.setBulkyPaperUsed(false);
         createData(printedBook);
+
         EBook eBook = new EBook();
         eBook.setName("Paper Towns");
         eBook.setAuthor("John Green");
         eBook.setFree(true);
         eBook.setAvailable(true);
         createData(eBook);
+
         HibernateUtil.shutdown();
     }
 

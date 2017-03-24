@@ -15,16 +15,20 @@ public class TestConcreteClasses {
         Payment payment = new Payment();
         payment.setAmount(52.6);
         createData(payment);
+
         CreditCard creditCard = new CreditCard();
         creditCard.setAmount(10);
         creditCard.setCcNumber("2536985474561236");
         creditCard.setExpireDate(new Date());
         createData(creditCard);
+
         ACH ach = new ACH();
         ach.setAccountName("abc");
         ach.setBank_name("xyz");
         ach.setAmount(14);
+
         createData(ach);
+
         HibernateUtil.shutdown();
 
     }

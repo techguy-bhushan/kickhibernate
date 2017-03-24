@@ -17,7 +17,9 @@ public class NodeRecord {
     @Id
     @GeneratedValue
     private Long id;
+
     private Date createdDate;
+
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="node_id")
     private Node node;

@@ -13,6 +13,7 @@ public class TestPerSubClasses {
         regularEmployee.setName("abc");
         regularEmployee.setSalaryPerMonth(50005);
         createData(regularEmployee);
+
         ContractEmployee contractEmployee = new ContractEmployee();
         contractEmployee.setName("rst");
         contractEmployee.setContractDuration("1 yr");

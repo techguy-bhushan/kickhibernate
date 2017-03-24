@@ -12,14 +12,17 @@ public class TestHibernateTablePerHierarchyWithAnnotation {
         Notification notification = new Notification();
         notification.setContent("hello ping");
         createData(notification);
+
         Email email = new Email();
         email.setEmailAddress("a@b.com");
         email.setContent("test data");
         createData(email);
+
         Message message = new Message();
         message.setContent("message");
         message.setMobileNumber("9632587412");
         createData(message);
+
         HibernateUtil.shutdown();
     }
 

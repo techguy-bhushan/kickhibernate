@@ -14,17 +14,20 @@ public class BasicKickWithHibernateAnnotation {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
+
         Address address = new Address();
         address.setPhoneNumber("78956145896");
         address.setPostalCode("456789");
         address.setStreet1("test");
         address.setStreet2("test ok");
+
         Employee employee = new Employee();
         employee.setFirstName("Bhushan");
         employee.setLastName("Uniyal");
         employee.setAddress(address);
         employee.setPassword("123456");
         employee.setConfirmPassword("123456");
+
         session.save(employee);
         session.getTransaction().commit();
         HibernateUtil.shutdown();

@@ -10,13 +10,16 @@ import util.HibernateUtil;
 public class TestHibernateTablePerHierarchy {
     public static void main(String[] args) {
         createData(new Parent());
+
         Child1 child1 = new Child1();
         child1.setFirstName("jhon");
         child1.setLastName("Doe");
         createData(child1);
+
         Child2 child2 = new Child2();
         child2.setName("tesy");
         createData(child2);
+
         HibernateUtil.shutdown();
     }
 
