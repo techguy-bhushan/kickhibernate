@@ -51,6 +51,7 @@
      <mapping class="com.kickwithhibernate.generatorclassesinhibernate.jpaidentifierstrategies.autoidentifier.Auto"></mapping>
      <mapping class="com.kickwithhibernate.generatorclassesinhibernate.jpaidentifierstrategies.identityidentifier.Identity"></mapping>
      <mapping class="com.kickwithhibernate.generatorclassesinhibernate.jpaidentifierstrategies.sequenceidentifier.Sequence"></mapping>
+     <mapping class="com.kickwithhibernate.generatorclassesinhibernate.jpaidentifierstrategies.tableidentifier.Table"></mapping>
      <mapping class="com.kickwithhibernate.entitymapping.inheritancemapping.hibernatetableperhierarchy.withannotation.Notification"></mapping>
      <mapping class="com.kickwithhibernate.entitymapping.inheritancemapping.hibernatetableperhierarchy.withannotation.Email"></mapping>
      <mapping class="com.kickwithhibernate.entitymapping.inheritancemapping.hibernatetableperhierarchy.withannotation.Message"></mapping>
