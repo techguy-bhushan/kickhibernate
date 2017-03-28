@@ -63,5 +63,6 @@
      <mapping class="com.kickwithhibernate.entitymapping.inheritancemapping.tablepersubclass.withannotation.RegularEmployee"></mapping>
      <mapping class="com.kickwithhibernate.entitymapping.associationmapping.one2oneunidirectional.Body"></mapping>
      <mapping class="com.kickwithhibernate.entitymapping.associationmapping.one2oneunidirectional.Heart"></mapping>
+     <mapping class="com.kickwithhibernate.curd.Glass"></mapping>
     </session-factory>
 </hibernate-configuration>
