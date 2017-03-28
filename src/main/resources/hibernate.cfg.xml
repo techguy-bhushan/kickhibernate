@@ -63,6 +63,11 @@
      <mapping class="com.kickwithhibernate.entitymapping.inheritancemapping.tablepersubclass.withannotation.RegularEmployee"></mapping>
      <mapping class="com.kickwithhibernate.entitymapping.associationmapping.one2oneunidirectional.Body"></mapping>
      <mapping class="com.kickwithhibernate.entitymapping.associationmapping.one2oneunidirectional.Heart"></mapping>
+     <mapping class="com.kickwithhibernate.transactionmanagement.Engine"></mapping>
+     <mapping class="com.kickwithhibernate.transactionmanagement.Car"></mapping>
      <mapping class="com.kickwithhibernate.curd.Glass"></mapping>
+     <mapping class="com.kickwithhibernate.hql.School"></mapping>
+     <mapping class="com.kickwithhibernate.hql.Teacher"></mapping>
+     <mapping class="com.kickwithhibernate.hibernatenamedquery.OS"></mapping>
     </session-factory>
 </hibernate-configuration>
