@@ -69,5 +69,7 @@
      <mapping class="com.kickwithhibernate.hql.School"></mapping>
      <mapping class="com.kickwithhibernate.hql.Teacher"></mapping>
      <mapping class="com.kickwithhibernate.hibernatenamedquery.OS"></mapping>
+     <mapping class="com.kickwithhibernate.hibernatecriteriaquerylanguage.Movie"></mapping>
+     <mapping class="com.kickwithhibernate.hibernatecriteriaquerylanguage.Genre"></mapping>
     </session-factory>
 </hibernate-configuration>
