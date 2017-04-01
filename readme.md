@@ -16,6 +16,8 @@ e.g:  <br>
 `<property name="connection.password">password</property>
 <property name="connection.username">root</property>`
 
+# Step by step
+
 * Hibernate Util
 * dialects
 * StartWithXML
@@ -29,6 +31,8 @@ collection,
 inheritance.
 * HQL
 * HibernateNamedQuery
+* HibernateCriteriaQueryLanguage
+* Cache
 
 
 
