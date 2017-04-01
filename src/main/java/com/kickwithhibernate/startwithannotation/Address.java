@@ -1,12 +1,15 @@
 package com.kickwithhibernate.startwithannotation;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 
 /**
  * Created by bhushan on 21/3/17.
  */
 @Embeddable
-public class Address {
+public class Address implements Serializable {
+    private static final long serialVersionUID = -6740445995621493668L;
     private String street1;
     private String street2;
     private String phoneNumber;

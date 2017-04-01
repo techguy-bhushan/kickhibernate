@@ -1,5 +1,7 @@
 package com.kickwithhibernate.generatorclassesinhibernate.assigned;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,7 +25,8 @@ import org.hibernate.annotations.GenericGenerator;
  *But here we are using annotations so in this case use @Generated annotation and set it's value assigned
  */
 @Entity
-public class Assigned {
+public class Assigned implements Serializable {
+    private static final long serialVersionUID = 7378293283289008145L;
     @Id
     @GeneratedValue(generator = "assigned")
     @GenericGenerator(name = "assigned", strategy = "assigned")

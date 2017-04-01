@@ -1,5 +1,6 @@
 package com.kickwithhibernate.entitymapping.collectionmapping.one2many.withannotation;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,8 @@ import javax.persistence.OneToMany;
  * Created by bhushan on 15/3/17.
  */
 @Entity(name = "albums")
-public class Album {
+public class Album implements Serializable{
+    private static final long serialVersionUID = 815992849465301975L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

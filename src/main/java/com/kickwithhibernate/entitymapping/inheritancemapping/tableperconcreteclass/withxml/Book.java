@@ -1,9 +1,12 @@
 package com.kickwithhibernate.entitymapping.inheritancemapping.tableperconcreteclass.withxml;
 
+import java.io.Serializable;
+
 /**
  * Created by bhushan on 12/3/17.
  */
-public class Book {
+public class Book implements Serializable {
+    private static final long serialVersionUID = 2620041729453219188L;
     private Long id;
     private String author;
     private String name;

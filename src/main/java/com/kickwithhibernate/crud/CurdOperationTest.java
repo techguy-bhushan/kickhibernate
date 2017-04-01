@@ -1,6 +1,7 @@
-package com.kickwithhibernate.curd;
+package com.kickwithhibernate.crud;
 
 import com.kickwithhibernate.dao.BaseDAO;
+import util.HibernateUtil;
 
 /**
  * Created by bhushan on 28/3/17.
@@ -28,6 +29,8 @@ public class CurdOperationTest {
 
         // Delete Glass
         curdOperationTest.deleteGlass(glass);
+
+        HibernateUtil.shutdown();
     }
 
     public Glass createGlass() {

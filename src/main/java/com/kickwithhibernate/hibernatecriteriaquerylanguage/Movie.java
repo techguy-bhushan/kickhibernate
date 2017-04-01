@@ -1,5 +1,6 @@
 package com.kickwithhibernate.hibernatecriteriaquerylanguage;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +17,8 @@ import org.hibernate.annotations.Type;
  * Created by bhushan on 29/3/17.
  */
 @Entity
-public class Movie {
+public class Movie implements Serializable {
+    private static final long serialVersionUID = 5736798888449573751L;
     @Id
     @GeneratedValue
     private Long id;

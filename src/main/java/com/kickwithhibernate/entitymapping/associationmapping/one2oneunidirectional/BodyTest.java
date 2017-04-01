@@ -10,11 +10,11 @@ import util.HibernateUtil;
  */
 public class BodyTest {
     public static void main(String[] args) {
-        createDate();
+        createData();
         HibernateUtil.shutdown();
     }
 
-    private static void createDate() {
+    private static void createData() {
         Session session =  HibernateUtil.getSession();
         session.beginTransaction();
 

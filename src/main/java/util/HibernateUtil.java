@@ -2,23 +2,34 @@ package util;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 /**
  * Created by bhushan on 19/2/17.
  */
 public class HibernateUtil {
-    private static final SessionFactory sessionFactory = buildSessionFactory();
+    private static SessionFactory sessionFactory = buildSessionFactory();
     private static SessionFactory buildSessionFactory() {
         try {
             // Create the SessionFactory from hibernate.cfg.xml
-            return new Configuration().configure().buildSessionFactory();
+            if (sessionFactory == null)
+            {
+                Configuration configuration = new Configuration().configure(HibernateUtil.class.getResource("/hibernate.cfg.xml"));
+                StandardServiceRegistryBuilder serviceRegistryBuilder = new StandardServiceRegistryBuilder();
+                serviceRegistryBuilder.applySettings(configuration.getProperties());
+                ServiceRegistry serviceRegistry = serviceRegistryBuilder.build();
+                sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+                return sessionFactory;
+            }
         }
         catch (Throwable ex) {
             // Make sure you log the exception, as it might be swallowed
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
+        return sessionFactory;
     }
     /*
      *The SessionFactory is a factory of session and client of ConnectionProvider.
@@ -35,13 +46,7 @@ public class HibernateUtil {
     * It also provides factory methods for Transaction, Query and Criteria.
     */
     public static Session getSession() {
-
         return sessionFactory.openSession();
-    }
-
-    public static Session getCurrentSession() {
-
-        return sessionFactory.getCurrentSession();
     }
 
     public static void shutdown() {

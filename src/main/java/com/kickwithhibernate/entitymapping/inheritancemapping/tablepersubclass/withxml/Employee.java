@@ -1,9 +1,12 @@
 package com.kickwithhibernate.entitymapping.inheritancemapping.tablepersubclass.withxml;
 
+import java.io.Serializable;
+
 /**
  * Created by bhushan on 12/3/17.
  */
-public class Employee {
+public class Employee implements Serializable {
+    private static final long serialVersionUID = 5314943103407852689L;
     private Long id;
     private String name;
 

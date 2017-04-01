@@ -16,4 +16,19 @@ e.g:  <br>
 `<property name="connection.password">password</property>
 <property name="connection.username">root</property>`
 
+* Hibernate Util
+* dialects
+* StartWithXML
+* StartWithAnnotation
+* Crud
+* TransactionManagement
+* GeneratorClassInHibernate
+* EntityMapping :
+association,
+collection,
+inheritance.
+* HQL
+* HibernateNamedQuery
+
+
 

@@ -1,5 +1,7 @@
 package com.kickwithhibernate.entitymapping.inheritancemapping.tableperconcreteclass.withannotation;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +15,8 @@ import javax.persistence.InheritanceType;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Payment {
+public class Payment implements Serializable {
+    private static final long serialVersionUID = -8339478460788105160L;
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;

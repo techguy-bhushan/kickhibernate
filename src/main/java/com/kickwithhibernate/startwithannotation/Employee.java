@@ -1,5 +1,7 @@
 package com.kickwithhibernate.startwithannotation;
 
+import java.io.Serializable;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -19,7 +21,9 @@ import javax.persistence.Transient;
 
 @Entity(name = "employess_2")
 @Table(name = "employess_2")
-public class Employee {
+public class Employee implements Serializable {
+    private static final long serialVersionUID = -3662585877797913050L;
+
     public Employee() {
     }
 

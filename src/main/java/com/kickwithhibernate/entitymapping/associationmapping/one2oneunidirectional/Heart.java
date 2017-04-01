@@ -1,5 +1,7 @@
 package com.kickwithhibernate.entitymapping.associationmapping.one2oneunidirectional;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,7 +10,8 @@ import javax.persistence.Id;
  * Created by bhushan on 21/3/17.
  */
 @Entity
-public class Heart {
+public class Heart implements Serializable {
+    private static final long serialVersionUID = 8040937148196053807L;
     @Id
     @GeneratedValue
     private Long id;
@@ -27,10 +30,6 @@ public class Heart {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public double getHearBeatSpeed() {
-        return heartBeatSpeed;
     }
 
     public void setHeartBeatSpeed(double heartBeatSpeed) {

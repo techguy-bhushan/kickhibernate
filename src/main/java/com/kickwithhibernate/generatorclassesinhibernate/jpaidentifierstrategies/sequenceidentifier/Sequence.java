@@ -1,5 +1,7 @@
 package com.kickwithhibernate.generatorclassesinhibernate.jpaidentifierstrategies.sequenceidentifier;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -15,7 +17,8 @@ import com.kickwithhibernate.generatorclassesinhibernate.sequence.SequenceGenera
 
 
 @Entity(name = "sequence_identifier")
-public class Sequence {
+public class Sequence implements Serializable{
+    private static final long serialVersionUID = -6317938706030568504L;
     @Id
 /*    @GeneratedValue(strategy = GenerationType.SEQUENCE)*/
     private Long id;

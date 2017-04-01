@@ -16,7 +16,7 @@ public class Test {
     public static void main(String[] args) {
         Test test = new Test();
         test.saveData();
-        test.fetchDate();
+        test.fetchData();
 
         HibernateUtil.shutdown();
     }
@@ -41,7 +41,7 @@ public class Test {
 
     }
 
-    private void fetchDate() {
+    private void fetchData() {
         Session session = HibernateUtil.getSession();
         Query query = session.createQuery("from albums");
         List<Album> albumList = query.list();

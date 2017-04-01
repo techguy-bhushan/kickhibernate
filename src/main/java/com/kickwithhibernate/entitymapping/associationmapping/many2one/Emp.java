@@ -1,5 +1,7 @@
 package com.kickwithhibernate.entitymapping.associationmapping.many2one;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,8 @@ import javax.persistence.ManyToOne;
  * Created by bhushan on 24/3/17.
  */
 @Entity
-public class Emp {
+public class Emp implements Serializable {
+    private static final long serialVersionUID = -7914335802662511374L;
     @Id
     @GeneratedValue
     private Long id;

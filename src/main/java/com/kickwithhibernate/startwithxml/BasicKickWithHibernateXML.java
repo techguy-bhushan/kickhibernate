@@ -1,6 +1,8 @@
 package com.kickwithhibernate.startwithxml;
 
 
+import java.io.Serializable;
+
 import org.hibernate.Session;
 
 import util.HibernateUtil;
@@ -10,7 +12,9 @@ import util.HibernateUtil;
  *Here basic kick off with hibernate,
  *Mapping Employee table in employee.hbm.xml
  */
-public class BasicKickWithHibernateXML {
+public class BasicKickWithHibernateXML implements Serializable {
+    private static final long serialVersionUID = 8854390471881901713L;
+
     public static void main(String[] args) {
         Session session = HibernateUtil.getSession();
         /*

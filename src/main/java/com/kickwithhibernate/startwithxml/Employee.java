@@ -1,5 +1,7 @@
 package com.kickwithhibernate.startwithxml;
 
+import java.io.Serializable;
+
 /**
  * Created by bhushan on 19/2/17.
  * ---------------------------------------------------------------------------------------
@@ -8,7 +10,9 @@ package com.kickwithhibernate.startwithxml;
  *-------------------------------------------------------------------------------------------
  * It is recommended that you have a default constructor at least package visibility so that hibernate can create the instance of the Persistent class by newInstance() method.
  */
-public class Employee {
+public class Employee implements Serializable {
+    private static final long serialVersionUID = 6774825366322336183L;
+
     public Employee() {
     }
 

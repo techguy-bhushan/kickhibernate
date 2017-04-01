@@ -6,7 +6,7 @@
 <hibernate-configuration>
     <session-factory>
        <!-- you can change it with update or another hbm2ddl.auto property value-->
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
         <!--This property makes Hibernate generate the appropriate SQL for the chosen database.-->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <!--The JDBC driver class.-->
@@ -20,12 +20,21 @@
         <!--Sql query enable.-->
         <property name="show_sql">true</property>
 
-        <!--Xml based entity-->
-        <mapping resource="employee.hbm.xml"></mapping>
-        <mapping resource="tableperhierarchy.hbm.xml"></mapping>
-        <mapping resource="testperconcreteclass.hbm.xml"></mapping>
-        <mapping resource="testpersubclass.hbm.xml"></mapping>
-        <mapping resource="question.hbm.xml"></mapping>
+     <!-- EhCache is plugged in to the hibernate.cfg.xml -->
+     <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+
+     <!-- enable second level cache and query cache -->
+     <property name="hibernate.cache.use_second_level_cache">true</property>
+     <property name="hibernate.cache.use_query_cache">true</property>
+     <property name="net.sf.ehcache.configurationResourceName">ehcache.xml</property>
+
+
+     <!--Xml based entity-->
+     <mapping resource="employee.hbm.xml"></mapping>
+     <mapping resource="tableperhierarchy.hbm.xml"></mapping>
+     <mapping resource="testperconcreteclass.hbm.xml"></mapping>
+     <mapping resource="testpersubclass.hbm.xml"></mapping>
+     <mapping resource="question.hbm.xml"></mapping>
 
      <!--Annotation base entity-->
      <mapping class="com.kickwithhibernate.startwithannotation.Employee"/>
@@ -65,11 +74,14 @@
      <mapping class="com.kickwithhibernate.entitymapping.associationmapping.one2oneunidirectional.Heart"></mapping>
      <mapping class="com.kickwithhibernate.transactionmanagement.Engine"></mapping>
      <mapping class="com.kickwithhibernate.transactionmanagement.Car"></mapping>
-     <mapping class="com.kickwithhibernate.curd.Glass"></mapping>
+     <mapping class="com.kickwithhibernate.crud.Glass"></mapping>
+     <mapping class="com.kickwithhibernate.entitymapping.collectionmapping.many2many.withjointable.Artist"></mapping>
+     <mapping class="com.kickwithhibernate.entitymapping.collectionmapping.many2many.withjointable.Event"></mapping>
      <mapping class="com.kickwithhibernate.hql.School"></mapping>
      <mapping class="com.kickwithhibernate.hql.Teacher"></mapping>
      <mapping class="com.kickwithhibernate.hibernatenamedquery.OS"></mapping>
      <mapping class="com.kickwithhibernate.hibernatecriteriaquerylanguage.Movie"></mapping>
      <mapping class="com.kickwithhibernate.hibernatecriteriaquerylanguage.Genre"></mapping>
+     <mapping class="com.kickwithhibernate.cache.GameLevel"></mapping>
     </session-factory>
 </hibernate-configuration>

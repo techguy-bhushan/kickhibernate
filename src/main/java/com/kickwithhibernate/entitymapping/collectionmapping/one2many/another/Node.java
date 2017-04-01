@@ -1,5 +1,6 @@
 package com.kickwithhibernate.entitymapping.collectionmapping.one2many.another;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +13,8 @@ import javax.persistence.OneToMany;
  * Created by bhushan on 19/3/17.
  */
 @Entity
-public class Node {
+public class Node implements Serializable {
+    private static final long serialVersionUID = 2907865024015050297L;
     @Id
     @GeneratedValue
     private Long id;

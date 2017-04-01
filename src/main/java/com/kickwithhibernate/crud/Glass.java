@@ -1,4 +1,6 @@
-package com.kickwithhibernate.curd;
+package com.kickwithhibernate.crud;
+
+import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +10,8 @@ import javax.persistence.Id;
  * Created by bhushan on 28/3/17.
  */
 @Entity
-public class Glass {
+public class Glass implements Serializable {
+    private static final long serialVersionUID = 9140090564566561556L;
     @Id
     @GeneratedValue
     private Long id;

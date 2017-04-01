@@ -1,5 +1,6 @@
 package com.kickwithhibernate.hql;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,7 +13,8 @@ import javax.persistence.OneToMany;
  * Created by bhushan on 28/3/17.
  */
 @Entity
-public class School {
+public class School implements Serializable {
+    private static final long serialVersionUID = 5584518320017438589L;
     @Id
     @GeneratedValue
     private Long id;

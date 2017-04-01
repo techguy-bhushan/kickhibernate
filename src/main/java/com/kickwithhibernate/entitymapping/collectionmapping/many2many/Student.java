@@ -1,5 +1,6 @@
 package com.kickwithhibernate.entitymapping.collectionmapping.many2many;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +13,8 @@ import javax.persistence.ManyToMany;
  * Created by bhushan on 24/3/17.
  */
 @Entity
-public class Student {
+public class Student implements Serializable {
+    private static final long serialVersionUID = 224624346906856823L;
     @Id
     @GeneratedValue
     private Long id;

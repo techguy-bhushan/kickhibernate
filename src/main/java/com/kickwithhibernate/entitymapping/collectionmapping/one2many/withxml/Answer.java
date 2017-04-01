@@ -1,9 +1,12 @@
 package com.kickwithhibernate.entitymapping.collectionmapping.one2many.withxml;
 
+import java.io.Serializable;
+
 /**
  * Created by bhushan on 12/3/17.
  */
-public class Answer {
+public class Answer implements Serializable {
+    private static final long serialVersionUID = -5950352222510529959L;
     private int id;
     private String answer;
 

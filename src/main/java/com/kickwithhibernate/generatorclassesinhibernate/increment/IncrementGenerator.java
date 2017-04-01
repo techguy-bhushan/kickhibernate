@@ -1,5 +1,7 @@
 package com.kickwithhibernate.generatorclassesinhibernate.increment;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,7 +20,8 @@ import org.hibernate.annotations.GenericGenerator;
  * @javax.persistence.GeneratedValue and @org.hibernate.annotations.GenericGenerator work in tandem to indicate that Hibernate should use Hibernate's increment generation strategy for this entity's identifier values.
  */
 @Entity(name = "increment_generator")
-public class IncrementGenerator {
+public class IncrementGenerator implements Serializable {
+    private static final long serialVersionUID = 3140266995943376613L;
     @Id
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")

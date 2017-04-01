@@ -1,5 +1,7 @@
 package com.kickwithhibernate.hibernatenamedquery;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +19,8 @@ import javax.persistence.NamedQuery;
 })
 
 @Entity
-public class OS {
+public class OS implements Serializable {
+    private static final long serialVersionUID = -8735297952425550651L;
     @Id
     @GeneratedValue
     private Long id;

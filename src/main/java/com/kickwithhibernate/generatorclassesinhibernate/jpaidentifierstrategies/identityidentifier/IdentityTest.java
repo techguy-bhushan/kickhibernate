@@ -1,12 +1,16 @@
 package com.kickwithhibernate.generatorclassesinhibernate.jpaidentifierstrategies.identityidentifier;
 
+import java.io.Serializable;
+
 import com.kickwithhibernate.dao.BaseDAO;
 import util.HibernateUtil;
 
 /**
  * Created by bhushan on 9/3/17.
  */
-public class IdentityTest {
+public class IdentityTest implements Serializable{
+    private static final long serialVersionUID = 4194136612017585794L;
+
     public static void main(String[] args) {
         createData();
         HibernateUtil.shutdown();

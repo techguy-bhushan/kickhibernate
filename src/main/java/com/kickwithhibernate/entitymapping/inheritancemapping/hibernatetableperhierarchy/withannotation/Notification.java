@@ -1,5 +1,7 @@
 package com.kickwithhibernate.entitymapping.inheritancemapping.hibernatetableperhierarchy.withannotation;
 
+import java.io.Serializable;
+
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
@@ -17,7 +19,8 @@ import javax.persistence.InheritanceType;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue(value = "notification")
-public class Notification {
+public class Notification implements Serializable {
+    private static final long serialVersionUID = 3406796445951326121L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
