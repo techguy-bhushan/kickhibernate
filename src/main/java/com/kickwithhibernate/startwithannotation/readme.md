@@ -1,124 +1,123 @@
-<p> Hibernate Annotations are based on the JPA 2 specification and supports all the features.
-        *All the JPA annotations are defined in the javax.persistence.* package.
-        *Hibernate EntityManager implements the interfaces and life cycle defined by the JPA specification.
-        *The core advantage of using hibernate annotation is that you don't need to create mapping (hbm) file.
-        *Here, hibernate annotations are used to provide the meta data.
+**Hibernate Annotations** are based on the **JPA 2 specification** and supports all the features.
+
+- All the JPA annotations are defined in the javax.persistence.* package.
+- Hibernate EntityManager implements the interfaces and life cycle defined by the JPA specification.
+- The core advantage of using hibernate annotation is that you don't need to create mapping (hbm) file.
+- Here, hibernate annotations are used to provide the meta data.
 
 
 
 # @Entity:
-<p>package: import javax.persistence.Entity; <br>
-        Contents:Which java bean we want to persist in database, add @Entity annotation on it.<p>
-<code>
-e.g:-
+package: javax.persistence.Entity
+content: Which java bean we want to persist in database, add @Entity annotation on it.
+
+```
 @Entity
 public class User {....}
-</code>
+```
 
 # @Table:
-<p> package: import javax.persistence.Table;<br>
-        content: Specifies the primary table for the annotated entity. Additional tables may be specified using SecondaryTable or SecondaryTables annotation.
-        If no Table annotation is specified for an entity class, the default values apply. </p><br>
-<code>
-e.g:
+package: javax.persistence.Table
+content: Specifies the primary table for the annotated entity. Additional tables may be specified using SecondaryTable or SecondaryTables annotation.
+If no Table annotation is specified for an entity class, the default values apply.
+
+```
 @Entity
 @Table(name="CUST", schema="RECORDS")
 public class Customer { ... }
-</code>
-
+```
 
  # @Column:
-<p> package: import javax.persistence.Column;
-        content: It is used to specify the mapped column for a persistent property or field.</p> <br>
-<code>
-e.g:
+package: javax.persistence.Column
+content: It is used to specify the mapped column for a persistent property or field.
+
+```
 @Column(name = "email_address", nullable = true, length = 120)
 private String emailAddress;
-</code>
+```
 
 # @Id:
-<p>package: import javax.persistence.Id;<br>
-        content: Specifies the primary key of an entity. <p><br>
-<code>
-e.g:-
+package: javax.persistence.Id
+content: Specifies the primary key of an entity.
+
+```
 @Id
 private Long id;
-</code>
+```
 
  # @GeneratedValue:
-<p> package: import javax.persistence.GeneratedValue;<br>
-        content: Provides for the specification of generation strategies for the values of primary keys, default strategy is GenerationType.AUTO. <p> <br>
-<code>
-e.g:-
+package: javax.persistence.GeneratedValue
+content: Provides for the specification of generation strategies for the values of primary keys.
+Default strategy is GenerationType.AUTO.
+
+```
 @Id
 @GeneratedValue
 private Long id;
-</code>
+```
 
 # @Version:
-<p> package: import javax.persistence.Version; <br>
-        content: Specifies the version field or property of an entity class that serves as its optimistic lock value.
-        The version is used to ensure integrity when performing the merge operation and for optimistic concurrency control. </p> <br>
-<code>
-e.g:-
+package: javax.persistence.Version
+content: Specifies the version field or property of an entity class that serves as its optimistic lock value.
+The version is used to ensure integrity when performing the merge operation and for optimistic concurrency control.
+
+```
 @Version
 private Long version;
-</code>
+```
 
 # @OrderBy:
-<p>package: import javax.persistence.OrderBy;<br>
-        content: Specifies the ordering of the elements of a collection valued association or element collection at the point when the association or collection is retrieved.<br>
-<code>
-e.g:-
+package: javax.persistence.OrderBy
+content: Specifies the ordering of the elements of a collection valued association or element collection at the point when the association or collection is retrieved.
+
+```
 @OrderBy("createdOn desc")
 private List<Book> books;
-</code>
+```
 
 # @Transient:
-<p> import javax.persistence.Transient;<br>
-        content: @Transient annotation is used to indicate that a field is not to be persisted in the database.</p><br>
-<code>
-e.g:-
+import javax.persistence.Transient
+content: @Transient annotation is used to indicate that a field is not to be persisted in the database.
+
+```
 @Transient
 private String confirmPassword;
-</code>
+```
 
 # @Lob:
-<p> package: import javax.persistence.Lob; <br>
-        content -> @Lob used to specifies that a persistent property or field should be persisted as a large object to a database-supported large object type.<p> <br>
-<code>
-e.g:1-
+package: import javax.persistence.Lob
+content: @Lob used to specifies that a persistent property or field should be persisted as a large object to a database-supported large object type.
+
+```
 @Lob
 protected String report;
+```
 
-</code> <br>
-<code>
-        e.g:2-
+```
 @Lob
 protected byte[] pic;
-</code> <br>
+```
 
 # Hibernate Inheritance Mapping Annotations
 
 # @Inheritance:
 
-<p1>package: import javax.persistence.Inheritance;<br>
-        content: Defines the inheritance strategy to be used for an entity class hierarchy.<br>
-        It is specified on the entity class that is the root of the entity class hierarchy.<br>
-        If the Inheritance annotation is not specified or if no inheritance type is specified for an entity class hierarchy, the SINGLE_TABLE mapping strategy is used.</p> <br>
-<code>
-e.g:-
+package: javax.persistence.Inheritance
+content: Defines the inheritance strategy to be used for an entity class hierarchy.
+        It is specified on the entity class that is the root of the entity class hierarchy.
+        If the Inheritance annotation is not specified or if no inheritance type is specified for an entity class hierarchy, the SINGLE_TABLE mapping strategy is used.
+```
 @Inheritance(strategy= InheritanceType.JOINED)
 public class Employee {}
-</code>
+```
 
 # @DiscriminatorColumn:
-<p1>package: import javax.persistence.DiscriminatorColumn;<br>
-        content:It Is used to define the discriminator column for the SINGLE_TABLE and JOINED inheritance mapping strategies.<br>
-        The strategy and the discriminator column are only specified in the root of an entity class hierarchy or subhierarchy in which a different inheritance strategy is applied.<br>
-        If the DiscriminatorColumn annotation is missing, and a discriminator column is required, the name of the discriminator column defaults to "DTYPE" and the discriminator type to DiscriminatorType.STRING.</p> <br>
+package: javax.persistence.DiscriminatorColumn
+content: It Is used to define the discriminator column for the SINGLE_TABLE and JOINED inheritance mapping strategies.
+        The strategy and the discriminator column are only specified in the root of an entity class hierarchy or subhierarchy in which a different inheritance strategy is applied.
+        If the DiscriminatorColumn annotation is missing, and a discriminator column is required, the name of the discriminator column defaults to "DTYPE" and the discriminator type to DiscriminatorType.STRING.
 
-<code>
+```
 Example:
 @Entity
 @Table(name="CUST")
@@ -128,7 +127,7 @@ public class Customer { ... }
 <br>
 @Entity
 public class ValuedCustomer extends Customer { ... }
-</code>
+```
 
 # @DiscriminatorValue:
 <p>package: import javax.persistence.DiscriminatorValue; <br>
