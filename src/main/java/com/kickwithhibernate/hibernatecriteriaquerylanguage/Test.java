@@ -29,13 +29,12 @@ public class Test {
         List<Movie> movies = (List<Movie>) criteria.list();
         System.out.println("Number of movies exists in database :"+movies.size());
 
-        //Get first 5 movies
+        //Set the position of the first result to retrieve.
         Criteria first5MoviesCriteria = session.createCriteria(Movie.class);
-        first5MoviesCriteria=session.createCriteria(Movie.class);
         movies = first5MoviesCriteria.setFirstResult(5).list();
         System.out.println("Number of get movies :"+movies.size());
 
-        // Get the movies whic have name "James Bond 1"
+        // Get the movies which have name "James Bond 1"
         criteria =  session.createCriteria(Movie.class);
         criteria.add(Restrictions.eq("name", "James Bond 1"));
         movies = criteria.list();

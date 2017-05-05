@@ -14,7 +14,7 @@ public class BaseDAO<T, PK extends Serializable> {
     public T save(T entity) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
-        session.save(entity);
+        session.saveOrUpdate(entity);
         session.getTransaction().commit();
         session.close();
         return entity;
