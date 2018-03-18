@@ -28,7 +28,7 @@ public class SchoolDao {
         properties.put("hibernate.connection.password", "root");
         properties.put("hibernate.connection.url", "jdbc:mysql://localhost:3306/kickhibernate");
         properties.put("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-        properties.put("hibernate.hbm2ddl.auto", "create-drop");
+        properties.put("hibernate.hbm2ddl.auto", "create");
         properties.put("hibernate.show_sql", true);
         SessionFactory sessionFactory = new Configuration().addProperties(properties)
                 .addAnnotatedClass(School.class).buildSessionFactory();

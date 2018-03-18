@@ -15,6 +15,8 @@
         <module>naming</module>
         <module>custombasictype</module>
         <module>attributeconverter</module>
+        <module>enums</module>
+        <module>embeddable</module>
     </modules>
     <packaging>pom</packaging>
     <properties>

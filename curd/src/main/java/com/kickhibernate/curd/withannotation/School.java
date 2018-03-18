@@ -1,5 +1,7 @@
 package com.kickhibernate.curd.withannotation;
 
+import org.hibernate.annotations.ColumnTransformer;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +13,14 @@ public class School {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    /*
+ Column transformers: read and write expressions:
+Hibernate allows you to customize the SQL it uses to read and write the values of columns mapped to @Basic types. For example
+    * */
+    @ColumnTransformer(
+            read = "totalNumberOfStudent - 100",
+            write = "? + 100"
+    )
     private Long totalNumberOfStudent;
 
     public Long getId() {
