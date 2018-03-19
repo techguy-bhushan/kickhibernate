@@ -2,10 +2,7 @@ package com.kickhibernate.curd.withannotation;
 
 import org.hibernate.annotations.ColumnTransformer;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class School {
@@ -22,6 +19,23 @@ Hibernate allows you to customize the SQL it uses to read and write the values o
             write = "? + 100"
     )
     private Long totalNumberOfStudent;
+
+    private final String preFix = "S-H-5";
+
+    //You can use static and then Hibernate will not persist those fields. or marked as @Transient
+    private static String postFix = "Ok";
+
+    public String getPreFix() {
+        return preFix;
+    }
+
+    public static String getPostFix() {
+        return postFix;
+    }
+
+    public static void setPostFix(String postFix) {
+        School.postFix = postFix;
+    }
 
     public Long getId() {
         return id;

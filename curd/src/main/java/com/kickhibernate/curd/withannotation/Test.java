@@ -24,6 +24,17 @@ public class Test {
 
             // insert employee
             Long id = schoolDao.create(school);
+/*
+mysql> desc School;
++----------------------+--------------+------+-----+---------+-------+
+| Field                | Type         | Null | Key | Default | Extra |
++----------------------+--------------+------+-----+---------+-------+
+| id                   | bigint(20)   | NO   | PRI | NULL    |       |
+| name                 | varchar(255) | YES  |     | NULL    |       |
+| preFix               | varchar(255) | YES  |     | NULL    |       |
+| totalNumberOfStudent | bigint(20)   | YES  |     | NULL    |       |
++----------------------+--------------+------+-----+---------+-------+
+* */
             // Verify id
             assertThat(id, Is.is(1l));
 

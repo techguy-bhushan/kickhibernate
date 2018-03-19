@@ -19,7 +19,7 @@ public class UserDaoTest {
     }
 
     @Test
-    public void saveProduct() {
+    public void saveUser() {
         Address address1 = new Address();
         address1.setLine("line1");
         address1.setCity("Delhi");
@@ -31,10 +31,21 @@ public class UserDaoTest {
         address2.setCity("Noida");
         address2.setStreet("street1");
 
+        ContactNumber contactNumber = new ContactNumber();
+        contactNumber.setNumber("1234567890");
+        contactNumber.setContactNumberType(ContactNumberType.MOBILE_NUMBER);
+
+        ContactNumber contactNumber2 = new ContactNumber();
+        contactNumber2.setNumber("+0 734567890");
+        contactNumber2.setContactNumberType(ContactNumberType.TELEPHONE_NUMBER);
+
+
         User instance = new User();
         instance.setId(1);
         instance.setAddress1(address1);
         instance.setAddress2(address2);
+        instance.addContactNumber(contactNumber);
+        instance.addContactNumber(contactNumber2);
         Integer id =userDao.save(instance);
 
         assertThat(id, Is.is(1));
@@ -62,12 +73,24 @@ mysql> desc User;
 +---------------+--------------+------+-----+---------+-------+
 8 rows in set (0.00 sec)
 
-mysql> select * from User;
-+----+-----------+-----------+-------------+-------------+-------------+---------------+------+
-| id | home_city | home_line | home_street | office_city | office_line | office_street | name |
-+----+-----------+-----------+-------------+-------------+-------------+---------------+------+
-|  1 | Delhi     | line1     | street1     | Noida       | line2       | street1       | NULL |
-+----+-----------+-----------+-------------+-------------+-------------+---------------+------+
+mysql> desc contact_number;
++-------------------+--------------+------+-----+---------+-------+
+| Field             | Type         | Null | Key | Default | Extra |
++-------------------+--------------+------+-----+---------+-------+
+| user_id           | int(11)      | NO   | PRI | NULL    |       |
+| contactNumberType | varchar(255) | YES  |     | NULL    |       |
+| number            | varchar(255) | YES  |     | NULL    |       |
+| index_id          | int(11)      | NO   | PRI | NULL    |       |
++-------------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from contact_number;
++---------+-------------------+--------------+----------+
+| user_id | contactNumberType | number       | index_id |
++---------+-------------------+--------------+----------+
+|       1 | MOBILE_NUMBER     | 1234567890   |        0 |
+|       1 | TELEPHONE_NUMBER  | +0 734567890 |        1 |
++---------+-------------------+--------------+----------+
 
 * */
 }

@@ -1,6 +1,8 @@
 package com.kickhibernate;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
@@ -29,6 +31,27 @@ public class User {
     } )
 
     private Address address2;
+
+    @ElementCollection
+    @CollectionTable(name = "contact_number",
+    joinColumns = @JoinColumn(name = "user_id"))
+    @OrderColumn(name = "index_id")
+    private List<ContactNumber> contactNumbers = new ArrayList<>();
+
+    public void addContactNumber(ContactNumber contactNumber) {
+            if (contactNumbers == null) {
+                contactNumbers = new ArrayList<>();
+            }
+            contactNumbers.add(contactNumber);
+    }
+
+    public List<ContactNumber> getContactNumbers() {
+        return contactNumbers;
+    }
+
+    public void setContactNumbers(List<ContactNumber> contactNumbers) {
+        this.contactNumbers = contactNumbers;
+    }
 
     public Integer getId() {
         return id;
