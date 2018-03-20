@@ -2,6 +2,7 @@ package com.kickhibernate.curd.withannotation;
 
 import junit.framework.Assert;
 import org.hamcrest.core.Is;
+import org.junit.Test;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,11 +10,11 @@ import java.util.logging.Logger;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
-public class Test {
-    private final static Logger LOGGER = Logger.getLogger(Test.class.getName());
+public class SchoolDaoTest {
+    private final static Logger LOGGER = Logger.getLogger(SchoolDaoTest.class.getName());
 
-    public static void main(String[] args) {
-        try {
+    @Test
+    public void test() {
 
             SchoolDao schoolDao = SchoolDao.getSchoolDao();
 
@@ -62,8 +63,6 @@ mysql> desc School;
             school = schoolDao.get(id);
             Assert.assertNull(school);
 
-        } finally {
             SchoolDao.sessionFactory.close();
-        }
     }
 }

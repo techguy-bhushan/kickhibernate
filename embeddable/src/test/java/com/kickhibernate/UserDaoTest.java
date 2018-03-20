@@ -1,21 +1,25 @@
 package com.kickhibernate;
 
+import com.util.BaseDAO;
+import com.util.HibernateUtil;
 import org.hamcrest.core.Is;
 import org.hibernate.SessionFactory;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.awt.print.Book;
+
 import static org.junit.Assert.assertThat;
 
 public class UserDaoTest {
-    private static UserDao userDao;
+    private static BaseDAO<User, Integer> userDao;
     private static SessionFactory sessionFactory;
 
     @BeforeClass
     public static void init() {
-        sessionFactory = Hbm.getSessionFactory(User.class);
-        userDao = new UserDao(sessionFactory);
+        sessionFactory = HibernateUtil.getSessionFactory(User.class);
+        userDao = new BaseDAO<>(sessionFactory);
     }
 
     @Test

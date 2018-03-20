@@ -11,5 +11,12 @@
 
     <artifactId>custombasictype</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.kickhibernate</groupId>
+            <artifactId>hibernate-util</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

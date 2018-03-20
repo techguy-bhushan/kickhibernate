@@ -17,6 +17,8 @@
         <module>attributeconverter</module>
         <module>enums</module>
         <module>embeddable</module>
+        <module>associations</module>
+        <module>hibernateutil</module>
     </modules>
     <packaging>pom</packaging>
     <properties>

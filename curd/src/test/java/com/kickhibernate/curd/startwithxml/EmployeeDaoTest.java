@@ -2,6 +2,8 @@ package com.kickhibernate.curd.startwithxml;
 
 import junit.framework.Assert;
 import org.hamcrest.core.Is;
+import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
@@ -9,12 +11,17 @@ import static org.junit.Assert.assertThat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class TestWithXml {
-    private final static Logger LOGGER = Logger.getLogger(TestWithXml.class.getName());
-    public static void main(String[] args) {
-        try {
-            EmployeeDao employeeDao = EmployeeDao.getEmployeeDao();
+public class EmployeeDaoTest {
+    private final static Logger LOGGER = Logger.getLogger(EmployeeDaoTest.class.getName());
+    private EmployeeDao employeeDao = null;
 
+    @Before
+    public void init() {
+        employeeDao = EmployeeDao.getEmployeeDao();
+    }
+
+    @Test
+    public void test() {
             Employee employee = new Employee();
             employee.setId(1l);
             employee.setFirstName("Jhon");
@@ -49,10 +56,7 @@ public class TestWithXml {
             employee = employeeDao.get(id);
             Assert.assertNull(employee);
 
-        } finally {
-            EmployeeDao.sessionFactory.close();
-        }
-
+        EmployeeDao.sessionFactory.close();
     }
 
 

@@ -7,7 +7,7 @@ import java.util.Date;
 @Entity
 public class Book {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Convert(converter = PeriodStringConverter.class)

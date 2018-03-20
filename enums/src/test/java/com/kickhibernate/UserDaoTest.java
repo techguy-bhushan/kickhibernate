@@ -1,5 +1,7 @@
 package com.kickhibernate;
 
+import com.util.BaseDAO;
+import com.util.HibernateUtil;
 import org.hamcrest.core.Is;
 import org.hibernate.SessionFactory;
 import org.junit.AfterClass;
@@ -9,24 +11,23 @@ import org.junit.Test;
 import static org.junit.Assert.assertThat;
 
 public class UserDaoTest {
-    private static UserDao userDao;
+    private static BaseDAO<User,Long> userDao;
     private static SessionFactory sessionFactory;
 
     @BeforeClass
     public static void init() {
-        sessionFactory = Hbm.getSessionFactory(User.class);
-        userDao = new UserDao(sessionFactory);
+        sessionFactory = HibernateUtil.getSessionFactory(User.class);
+        userDao = new BaseDAO<>(sessionFactory);
     }
 
     @Test
     public void saveProduct() {
-        User instance = new User();
         User user = new User();
         user.setId(1l);
         user.setPhoneType(PhoneType.MOBILE);
         user.setGenderType(GenderType.MALE);
         user.setPaymentMethod(PaymentMethod.PAYPAL);
-        Long id =userDao.save(user);
+        Long id = userDao.save(user);
 
         assertThat(id, Is.is(1l));
     }

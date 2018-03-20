@@ -1,11 +1,13 @@
-package com.kickhibernate;
+package com.util;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import java.util.Properties;
 
-public class Hbm {
+public class HibernateUtil {
+
+
     private static Properties getProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
@@ -29,4 +31,5 @@ public class Hbm {
         }
         return configuration.buildSessionFactory();
     }
+
 }

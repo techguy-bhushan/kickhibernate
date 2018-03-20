@@ -1,9 +1,9 @@
 package com.kickhibernate.custombasictype;
 
+import com.util.BaseDAO;
 import org.hamcrest.core.Is;
 import org.hibernate.SessionFactory;
 import org.junit.AfterClass;
-import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -11,14 +11,14 @@ import java.util.BitSet;
 
 import static org.junit.Assert.assertThat;
 
-public class ProductDaoTest {
-    private static ProductDao productDao;
+public class ProductTest {
+    private static BaseDAO<Product, Integer> productDao;
     private static SessionFactory sessionFactory;
 
     @BeforeClass
     public static void init() {
         sessionFactory = Hbm.getSessionFactory(Product.class);
-        productDao = new ProductDao(sessionFactory);
+        productDao = new BaseDAO<>(sessionFactory);
     }
 
     @Test
@@ -27,10 +27,11 @@ public class ProductDaoTest {
         Product instance = new Product();
         instance.setId(1);
         instance.setBitSet(bitSet);
-        int id = productDao.save(instance);
-        Product product = productDao.get(id);
+        productDao.save(instance);
 
-        assertThat(product.getId(), Is.is(id));
+        Product product = productDao.findById(Product.class,1);
+
+        assertThat(product.getId(), Is.is(1));
         assertThat(product.getBitSet().size(), Is.is(bitSet.size()));
     }
 

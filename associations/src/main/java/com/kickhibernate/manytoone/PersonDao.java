@@ -1,27 +1,26 @@
-package com.kickhibernate;
+package com.kickhibernate.manytoone;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-public class UserDao {
+public class PersonDao {
     private SessionFactory sessionFactory;
 
-    public UserDao(SessionFactory sessionFactory) {
+    public PersonDao(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
-    public Integer save(User user) {
+    public Long saveAndPhone(Person person) {
         Session session = null;
-        Integer id = null;
+        Long id = null;
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            id = (Integer) session.save(user);
+            id = (Long) session.save(person);
             session.getTransaction().commit();
         } finally {
             session.close();
         }
         return id;
     }
-
 }
