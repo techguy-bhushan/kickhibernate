@@ -3,39 +3,50 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>kickhib</groupId>
-    <artifactId>kickhib</artifactId>
+    <groupId>com.kickhibernate</groupId>
+    <artifactId>kickhibernate</artifactId>
     <version>1.0-SNAPSHOT</version>
-<dependencies>
-    <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-core</artifactId>
-        <version>4.3.8.Final</version>
-    </dependency>
-    <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-        <version>5.1.9</version>
-    </dependency>
-    <dependency>
-        <groupId>org.testng</groupId>
-        <artifactId>testng</artifactId>
-        <version>6.9.9</version>
-        <scope>test</scope>
-    </dependency>
-    <!--  Hibernate EHCache API https://mvnrepository.com/artifact/org.hibernate/hibernate-ehcache -->
-    <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-ehcache</artifactId>
-        <version>4.3.8.Final</version>
-    </dependency>
-    <!-- EHCache Core APIs -->
-    <dependency>
-        <groupId>net.sf.ehcache</groupId>
-        <artifactId>ehcache-core</artifactId>
-        <version>2.6.9</version>
-    </dependency>
-</dependencies>
+    <modules>
+        <module>curd</module>
+<!--
+        <module>generatorstrategy</module>
+-->
+        <module>naming</module>
+        <module>custombasictype</module>
+        <module>attributeconverter</module>
+        <module>enums</module>
+        <module>embeddable</module>
+        <module>associations</module>
+        <module>hibernateutil</module>
+    </modules>
+    <packaging>pom</packaging>
+    <properties>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+    </properties>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.2.13.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.44</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+
+    </dependencies>
 </project>
+
