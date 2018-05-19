@@ -1,15 +1,18 @@
-package com.kickhibernate.manytoone;
+package com.kickhibernate.manytoone.unidirectional;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Phone {
+
+    @Id
+    @GeneratedValue
     private Long id;
 
     private String number;
 
     @ManyToOne
+    @JoinColumn(name = "p_id")
     private Person person;
 
     public Long getId() {
@@ -34,5 +37,14 @@ public class Phone {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    @Override
+    public String toString() {
+        return "Phone{" +
+                "id=" + id +
+                ", number='" + number + '\'' +
+                ", person=" + person +
+                '}';
     }
 }
